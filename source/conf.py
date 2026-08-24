@@ -206,6 +206,8 @@ linkcheck_ignore = [
     r'^https?://code\.metoffice\.gov\.uk(?:/.*)?$',
     r'https://doi.org/.*',
     r'https://cirrus.ucsd.edu/ncview/.*',
+    r'https://gitlab.kitware.com/.*',
+    r'https://zenodo.org/.*',
 ]
 
 # Add hyperlinks include file to avoid repeated links.
@@ -226,3 +228,7 @@ intersphinx_mapping = {
         'https://psyclone.readthedocs.io/en/stable/', None
     ),
 }
+
+linkcheck_retries = 3    # Retry each link up to 3 times.
+linkcheck_workers = 8    # Set up lots of processes to check links.
+linkcheck_timeout = 10   # Wait 10 seconds before giving up on a site.

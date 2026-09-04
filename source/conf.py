@@ -180,34 +180,6 @@ html_static_path = ['_static']
 html_css_files = ['nav-collapse.css', 'accessibility.css']
 html_js_files = ['nav-collapse.js', 'accessibility.js']
 
-# These URLs are valid learner-facing targets, but cannot be checked reliably
-# from public CI: Cylc Review is an internal hostname and the OASIS site serves
-# an incomplete certificate chain to Python/OpenSSL linkcheck clients.
-linkcheck_ignore = [
-    # an example (but non-existing) link appears in
-    # source/lfric_infrastructure/practical_stem_test.rst
-    'https://github.com/MetOffice/momentum_user_training.example_lfric_workflow/issues/2',
-    # anti-bot checks can intermittently return 415 in CI
-    r'^https?://abilitynet\.org\.uk(?:/.*)?$',
-    # inaccessible from GH Actions, probably anti-bot
-    r'^https?://agupubs\.onlinelibrary\.wiley\.com(?:/.*)?$',
-    # internal to Met Office
-    r'^https?://cylchub(?:/.*)?$',
-    # private repos
-    r'^https?://github\.com/MetOffice/jules(?:/.*)?$',
-    r'^https?://github\.com/MetOffice/LFRic-Atmosphere-Training(?:/.*)?$',
-    # intermittent connection timeouts from GH Actions
-    r'^https?://gitlab\.in2p3\.fr(?:/.*)?$',
-    # opening in Chrome is OK, but in Python it would complain
-    # "unable to get local issuer certificate".
-    # Possibly related to certifi
-    r'^https?://oasis\.cerfacs\.fr(?:/.*)?$',
-    r'^https://www.sciencedirect.com/science/article/pii/S0743731518305306$',
-    r'^https?://code\.metoffice\.gov\.uk(?:/.*)?$',
-    r'https://doi.org/.*',
-    r'https://cirrus.ucsd.edu/ncview/.*',
-]
-
 # Add hyperlinks include file to avoid repeated links.
 rst_epilog = open('hyperlinks.rst.include', 'r').read()
 
@@ -226,3 +198,25 @@ intersphinx_mapping = {
         'https://psyclone.readthedocs.io/en/stable/', None
     ),
 }
+
+# https://www.sphinx-doc.org/en/master/usage/configuration.html
+# #options-for-the-linkcheck-builder
+linkcheck_retries = 3      # Retry each link up to 3 times.
+linkcheck_workers = 8      # Set up lots of processes to check links.
+linkcheck_timeout = 10     # Wait 10 seconds before giving up on a site.
+
+# These URLs are valid learner-facing targets, but cannot be checked reliably:
+linkcheck_ignore = [
+    'https://github.com/MetOffice/momentum_user_training.example_lfric_workflow/issues/2',
+    r'^https?://abilitynet\.org\.uk(?:/.*)?$',
+    r'^https?://agupubs\.onlinelibrary\.wiley\.com(?:/.*)?$',
+    r'^https?://cylchub(?:/.*)?$',
+    r'^https?://gitlab\.in2p3\.fr(?:/.*)?$',
+    r'^https?://oasis\.cerfacs\.fr(?:/.*)?$',
+    r'^https://www.sciencedirect.com/science/article/pii/S0743731518305306$',
+    r'^https?://code\.metoffice\.gov\.uk(?:/.*)?$',
+    r'https://doi.org/.*',
+    r'https://cirrus.ucsd.edu/ncview/.*',
+    r'https://gitlab.kitware.com/.*',
+    r'https://zenodo.org/.*',
+]

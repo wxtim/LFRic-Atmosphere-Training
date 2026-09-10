@@ -80,10 +80,10 @@ The JULES model description papers provide the scientific background:
 
 See also:
 
-* H. S. Rumbold et al. (2023) `Assessing methods for representing soil
+* H. S. Rumbold et al. (2023), `Assessing methods for representing soil
   heterogeneity through a flexible approach within the Joint UK Land
   Environment Simulator (JULES) at version 3.4.1
-  <https://gmd.copernicus.org/articles/16/1875/2023/>` _ section 2.1 for
+  <https://gmd.copernicus.org/articles/16/1875/2023/>`_ section 2.1 for
   further scheme description.
 
 

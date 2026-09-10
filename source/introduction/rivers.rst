@@ -15,7 +15,7 @@ from/to the atmosphere and to the ocean via the OASIS3-MCT coupler.
 
 The river model used in Momentum is the Total Runoff Integrating Pathways
 (TRIP) model developed at the NASA/Goddard Space Flight Center (Oki and Sud,
-1998). 
+1998).
 
 In the Momentum framework JULES (embedded within LFRic) handles the soil
 moisture calculations and determines the amount of surface runoff and
